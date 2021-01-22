@@ -5,4 +5,7 @@ module.exports = {
     "prettier",
     "prettier/@typescript-eslint",
   ],
+  rules: {
+    "no-alert": false,
+  },
 };
