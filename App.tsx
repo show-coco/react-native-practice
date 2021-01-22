@@ -1,35 +1,76 @@
-import React, { useState } from "react";
-import { StyleSheet, TextInput, View, Text, Button } from "react-native";
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 export default function App() {
-  const onPressButton = () => {
+  const _onPressButton = () => {
     alert("You tapped the button!");
+  };
+
+  const _onLongPressButton = () => {
+    alert("You long-pressed the button!");
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <Button title="PRESS ME" onPress={onPressButton} />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button onPress={onPressButton} title="Press Me" color="#841584" />
-      </View>
-      <View style={styles.alternativeLayoutButtonContainer}>
-        <Button onPress={onPressButton} title="This looks great!" />
-        <Button onPress={onPressButton} title="OK!" color="#841584" />
-      </View>
+      <TouchableHighlight
+        onPress={_onPressButton}
+        style={styles.buttonContainer}
+      >
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Tatchable Heilight</Text>
+        </View>
+      </TouchableHighlight>
+
+      <TouchableOpacity onPress={_onPressButton} style={styles.buttonContainer}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Tatchable Opacity</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableHighlight
+        onLongPress={_onLongPressButton}
+        style={styles.buttonContainer}
+      >
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Tatchable Highlight</Text>
+        </View>
+      </TouchableHighlight>
+
+      <TouchableWithoutFeedback
+        onPress={_onPressButton}
+        style={styles.buttonContainer}
+      >
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>Tatchable Without Feedback</Text>
+        </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center" },
-  buttonContainer: {
-    margin: 20,
+  container: {
+    paddingTop: 60,
+    alignItems: "center",
   },
-  alternativeLayoutButtonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 20,
+  buttonContainer: {
+    marginBottom: 20,
+  },
+  button: {
+    width: 260,
+    alignItems: "center",
+    backgroundColor: "#2196F3",
+  },
+  buttonText: {
+    textAlign: "center",
+    padding: 20,
+    color: "white",
   },
 });
