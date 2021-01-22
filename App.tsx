@@ -1,30 +1,31 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TextInput, View, Text } from "react-native";
 
 export default function App() {
+  const [text, setText] = useState("");
+
   return (
-    <View
-      style={styles.container}
-      accessibilityHint="You can see blue and red box"
-    >
-      <View style={styles.blueChild} />
-      <View style={styles.redChild} />
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Type here to translate"
+        onChangeText={(value) => setText(value)}
+        defaultValue={text}
+      />
+      <Text>
+        {text
+          .split(" ")
+          .map((word) => word && "🍕")
+          .join(" ")}
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    height: 100,
-    padding: 20,
-  },
-  blueChild: {
-    backgroundColor: "blue",
-    flex: 0.3,
-  },
-  redChild: {
-    backgroundColor: "red",
-    flex: 0.5,
+  container: { flex: 1, alignItems: "center", justifyContent: "center" },
+  input: {
+    padding: 10,
+    fontSize: 24,
   },
 });
