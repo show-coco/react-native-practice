@@ -1,6 +1,6 @@
 import React from "react";
-import { LearnSectionList } from "./src/list-view";
+import { Header } from "./src/components/Header";
 
 export default function App() {
-  return <LearnSectionList />;
+  return <Header />;
 }
