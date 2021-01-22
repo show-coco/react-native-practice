@@ -1,31 +1,35 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, View, Text } from "react-native";
+import { StyleSheet, TextInput, View, Text, Button } from "react-native";
 
 export default function App() {
-  const [text, setText] = useState("");
+  const onPressButton = () => {
+    alert("You tapped the button!");
+  };
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Type here to translate"
-        onChangeText={(value) => setText(value)}
-        defaultValue={text}
-      />
-      <Text>
-        {text
-          .split(" ")
-          .map((word) => word && "🍕")
-          .join(" ")}
-      </Text>
+      <View style={styles.buttonContainer}>
+        <Button title="PRESS ME" onPress={onPressButton} />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button onPress={onPressButton} title="Press Me" color="#841584" />
+      </View>
+      <View style={styles.alternativeLayoutButtonContainer}>
+        <Button onPress={onPressButton} title="This looks great!" />
+        <Button onPress={onPressButton} title="OK!" color="#841584" />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", justifyContent: "center" },
-  input: {
-    padding: 10,
-    fontSize: 24,
+  container: { flex: 1, justifyContent: "center" },
+  buttonContainer: {
+    margin: 20,
+  },
+  alternativeLayoutButtonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 20,
   },
 });
