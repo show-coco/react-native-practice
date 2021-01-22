@@ -1,6 +1,6 @@
 import React from "react";
-import { LearnScrollView } from "./src/scroll-view";
+import { LearnSectionList } from "./src/list-view";
 
 export default function App() {
-  return <LearnScrollView />;
+  return <LearnSectionList />;
 }
